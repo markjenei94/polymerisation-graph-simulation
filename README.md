@@ -25,3 +25,7 @@ Setting up a system has three steps. Below is an example for a two component cop
 where the last item gives the reactivity of groups on a fully reacted monomer (0). Here a functional group on a free B monomers is 4 times as reactive as a group on a B monomer where that is the only reamining unreacted group. It is possible to include time dependence for the FSSE factors, using two files per monomer type: one that holds the FSSE values at given conversions in each line, the other containing the conversion values themselves (see example)
 
 To see how a system is set up in practice, see the examples folder.
+
+The output of GraphSimulation.run() is a collection files in the specified work folder. Each line of a file specifies a reaction as:
+  'monomer1_type' 'monomer2_type' 'monomer1_index' 'monomer2_index' 'monomer1_group_index' 'monomer2_group_index'
+where the group index is the index of the reacting functional group on the monomer.

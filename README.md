@@ -28,4 +28,5 @@ To see how a system is set up in practice, see the examples folder.
 
 The output of GraphSimulation.run() is a collection files in the specified work folder. Each line of a file specifies a reaction as:
 - 'monomer1_type' 'monomer2_type' 'monomer1_index' 'monomer2_index' 'monomer1_group_index' 'monomer2_group_index'
+
 where the group index is the index of the reacting functional group on the monomer, and each entry is an integer.

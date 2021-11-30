@@ -3,6 +3,7 @@ import warnings
 import functools
 import pandas as pd
 import networkx as nx
+from tqdm import tqdm
 
 
 class KineticRates:
@@ -122,6 +123,7 @@ class GraphSimulation:
         step = 0
         p = 0
         pp = 0
+        pbar = tqdm(total=target)
         while below_target:
             reaction = self.step()
             if reaction == []:
@@ -132,20 +134,13 @@ class GraphSimulation:
             step += 1
             self.step_ += 1
 
-            p += 1
-            if type(target_conversion) == float:
-                if sum(c) / 2 >= target:
-                    below_target = False
-                if p > pp:
-                    print('.', end='')
-                    pp += target * 0.1
-            else:
-                if ((c >= target).any()):
-                    below_target = False
-                if p > pp:
-                    print('.', end='')
-                    pp += sum(target) * 0.1
-        print('')
+            if sum(c) / 2 >= target:
+                below_target = False
+
+            pbar.update(1)
+        pbar.close()
+
+
 
         if len(save_file_loc) != 0:
             reactions = np.array(self.reactions)
